@@ -1,7 +1,6 @@
-# Windows thumbnail cache files
+# Windows image file caches
 Thumbs.db
 ehthumbs.db
-ehthumbs_vista.db
 
 # Folder config file
 Desktop.ini
@@ -21,3 +20,12 @@ $RECYCLE.BIN/
 # =========================
 # Operating System Files
 # =========================
+
+# Thumbnails
+._*
+
+# Visual Studio detritus
+bin
+obj
+.vs
+*.user
