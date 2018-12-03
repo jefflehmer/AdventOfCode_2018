@@ -8,8 +8,8 @@ namespace aoc_2018
     {
         public static void Do()
         {
-            //const string InputFile = @"C:\GitHub\AdventOfCode_2018\aoc_2018\Day_01\data\Day_01_test_5.aoc";
-            const string InputFile = @"C:\GitHub\AdventOfCode_2018\aoc_2018\Day_01\data\Day_01_input.aoc";
+            //const string InputFile = @"..\..\..\Day_01\data\Day_01_test_5.aoc";
+            const string InputFile = @"..\..\..\Day_01\data\Day_01_input.aoc";
 
             Do_1(InputFile);
             Do_2(InputFile);
