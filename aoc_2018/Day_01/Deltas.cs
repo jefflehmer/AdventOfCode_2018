@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-namespace aoc_2018.Day_01
+namespace aoc_2018
 {
     public class Deltas : List<int>, IEnumerator<int>
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace aoc_2018.Day_01
+namespace aoc_2018
 {
     public class Day_01
     {
@@ -11,10 +11,21 @@ namespace aoc_2018.Day_01
             //const string InputFile = @"C:\GitHub\AdventOfCode_2018\aoc_2018\Day_01\data\Day_01_test_5.aoc";
             const string InputFile = @"C:\GitHub\AdventOfCode_2018\aoc_2018\Day_01\data\Day_01_input.aoc";
 
-            //Do_1(InputFile);
+            Do_1(InputFile);
             Do_2(InputFile);
 
             Console.ReadLine();
+        }
+
+        static void Do_1(string srcFile)
+        {
+            var delta = 0;
+
+            var changes = System.IO.File.ReadAllLines(srcFile);
+            foreach (var change in changes)
+                delta += int.Parse(change);
+
+            Console.WriteLine($"Day 1.1: Resulting Delta: { delta }");
         }
 
         static void Do_2(string srcFile)
@@ -38,17 +49,6 @@ namespace aoc_2018.Day_01
                 }
                 frequencies.Add(frequency);
             } while (deltas.MoveNext());
-        }
-
-        static void Do_1(string srcFile)
-        {
-            var delta = 0;
-
-            var changes = System.IO.File.ReadAllLines(srcFile);
-            foreach (var change in changes)
-                delta += int.Parse(change);
-
-            Console.WriteLine($"Day 1.1: Resulting Delta: { delta }");
         }
     }
 }

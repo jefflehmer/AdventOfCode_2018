@@ -7,8 +7,9 @@ namespace aoc_2018
         static void Main(string[] args)
         {
             /*
+            Day_01.Do();
             */
-            Day_01.Day_01.Do();
+            Day_02.Do();
         }
     }
 }
