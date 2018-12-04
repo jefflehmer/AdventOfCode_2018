@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace aoc_2018
 {
@@ -11,8 +12,10 @@ namespace aoc_2018
             const string InputFile = @"..\..\..\Day_03\data\Day_03_test.aoc";
             //const string InputFile = @"..\..\..\Day_03\data\Day_03_input.aoc";
 
-            Do_1(InputFile);
+            //Do_1(InputFile);
             //Do_2(InputFile);
+
+            //Console.WriteLine($"Number of Square Inches: { (InputFile) }");
 
             Console.ReadLine();
         }
