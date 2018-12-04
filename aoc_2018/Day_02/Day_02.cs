@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace aoc_2018
@@ -18,32 +18,23 @@ namespace aoc_2018
             Console.ReadLine();
         }
 
-        // TODO: this solution is way too complex...think up a simpler one!
         static void Do_1(string srcFile)
         {
-            var checksum = 0;
-            var duets = new HashSet<string>();
-            var tercets = new HashSet<string>();
+            var duets = 0;
+            var tercets = 0;
 
             var lines = System.IO.File.ReadAllLines(srcFile);
             foreach (var line in lines)
             {
-                var scan = new Scan(line);
-                var twos = Regex.Split(scan.Matches(2), string.Empty);
-                foreach (string two in twos)
-                {
-                    if (!string.IsNullOrEmpty(two) && !duets.Contains(two))
-                        duets.Add(two);
-                }
-                var tres = Regex.Split(scan.Matches(3), string.Empty);
-                foreach (string tre in tres)
-                {
-                    if (!string.IsNullOrEmpty(tre) && !tercets.Contains(tre))
-                        tercets.Add(tre);
-                }
+                var letterGroups = line.GroupBy(l => l).Select(g => new { Key = g.Key, Counter = g.Count() });
+
+                if (letterGroups.Any(g => g.Counter == 2))
+                    duets++;
+                if (letterGroups.Any(g => g.Counter == 3))
+                    tercets++;
             }
 
-            Console.WriteLine($"Day 2.1: Checksum: { duets.Count * tercets.Count }");
+            Console.WriteLine($"Day 2.1: Checksum: duets({duets}) * tercets({tercets}) + { duets * tercets }");
         }
 
         static void Do_2(string srcFile)
