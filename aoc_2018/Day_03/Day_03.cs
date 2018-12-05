@@ -16,8 +16,6 @@ namespace aoc_2018
             Do_2(InputFile);
 
             //Console.WriteLine($"Number of Square Inches: { (InputFile) }");
-
-            Console.ReadLine();
         }
 
         static void Do_1(string srcFile)

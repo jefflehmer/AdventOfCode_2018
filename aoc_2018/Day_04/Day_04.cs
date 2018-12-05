@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -9,8 +10,10 @@ namespace aoc_2018
     {
         public static void Do()
         {
-            const string InputFile = @"..\..\..\Day_04\data\Day_04_test.aoc";
-            //const string InputFile = @"..\..\..\Day_04\data\Day_04_input.aoc";
+            //const string InputFile = @"..\..\..\Day_04\data\Day_04_test.aoc";
+            const string InputFile = @"..\..\..\Day_04\data\Day_04_input.aoc";
+
+            KeyValuePair<int, int> Def = new KeyValuePair<int, int>(0, 0);
 
             var lines = File
                 .ReadAllText(InputFile)
@@ -23,7 +26,7 @@ namespace aoc_2018
                 .Select((x, i) =>
                 {
                     if (x.Id == null)
-                        x.Id = inputs[i - 1].Id;
+                        x.Id = lines[i - 1].Id;
 
                     return x;
                 })
@@ -54,8 +57,39 @@ namespace aoc_2018
 
             Console.WriteLine($"Day 4.1: { result1 }");
             Console.WriteLine($"Day 4.2: { result2 }");
+        }
+        public class ParsedInput
+        {
+            public int? Id { get; set; }
+            public DateTime Date { get; set; }
+            public Action Action { get; set; }
 
-            Console.ReadLine();
+            public ParsedInput(string input)
+            {
+                var span = input.AsSpan();
+                var text = span.Slice(19).ToString();
+
+                Id = null;
+                Date = DateTime.Parse(span.Slice(1, 16));
+
+                if (text == "falls asleep")
+                    Action = Action.FallsAsleep;
+                else if (text == "wakes up")
+                    Action = Action.WakesUp;
+                else
+                {
+                    var index = span.IndexOf("#") + 1;
+                    Id = int.Parse(span.Slice(index, span.IndexOf(" begins") - index));
+                    Action = Action.BeginsShift;
+                }
+            }
+
+            public static ParsedInput Parse(string input) => new ParsedInput(input);
+        }
+
+        public enum Action
+        {
+            BeginsShift, FallsAsleep, WakesUp
         }
     }
 }
