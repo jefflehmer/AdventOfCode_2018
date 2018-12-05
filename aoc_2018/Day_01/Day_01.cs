@@ -13,8 +13,6 @@ namespace aoc_2018
 
             Do_1(InputFile);
             Do_2(InputFile);
-
-            Console.ReadLine();
         }
 
         static void Do_1(string srcFile)
