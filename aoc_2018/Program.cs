@@ -12,8 +12,10 @@ namespace aoc_2018
             Day_03.Do();
             Day_04.Do();
             Day_05.Do();
-            */
             Day_06.Do();
+            Day_07.Do();
+            */
+            Day_08.Do();
 
             Console.ReadLine();
         }
